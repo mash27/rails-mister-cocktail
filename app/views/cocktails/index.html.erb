@@ -1,18 +1,27 @@
-<div class="text-center">
-  <h1>All our cocktails</h1>
-</div>
-
-<div class="container">
-  <div class="row">
-    <% @cocktails.each do |cocktail| %>
-    <div class="col-xs-12 text-center">
-      <h2><%= cocktail.name %></h2>
-      <%= link_to "Details", cocktail_path(cocktail), class: "btn btn-primary" %>
+<div class="banner-content">
+  <h1>Cocktail Recipes</h1>
+  <p>Learn classic recipes</p>
+  <div class="container">
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-md-6 text-center">
+        <% if cocktail.photo? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.liquor.com/wp-content/uploads/2010/01/04120930/manhattan1.jpg')">
+          <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://www.welovesolo.com/wp-content/uploads/vecteezy/28/dngg54pm2wg.jpg')">
+            <% end %>
+            <div class="card-description">
+              <h2><%= cocktail.name %></h2>
+              <%= link_to "Details", cocktail_path(cocktail), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+    <br>
+    <br>
+    <div class="col-xs-12 text-center">
+      <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-primary" %></div>
+    </div>
   </div>
-</div>
-<br>
-<br>
-<div class="col-xs-12 text-center">
-  <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-primary" %></div>
